@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Agricultural System for crop health and yield monitoring">
+  <title>AgriSmart | Crop Health & Yield</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-icon">🌱</span> AgriSmart</a>
+    <nav aria-label="Main navigation">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#crops">Crop Health</a>
+      <a href="#yield">Yield Report</a>
+      <a href="#register">Farmer Registration</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">SMART AGRICULTURE • BETTER PRODUCTIVITY</p>
+        <h1>Grow smarter.<br><span>Harvest better.</span></h1>
+        <p>Monitor crop conditions, review field indicators, and make informed decisions with one simple agricultural dashboard.</p>
+        <a class="primary-btn" href="#dashboard">Explore Dashboard <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-art" role="img" aria-label="Illustration of a green farm">
+        <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
+        <div class="field-row row-one"></div><div class="field-row row-two"></div><div class="field-row row-three"></div>
+        <div class="plant plant-one">🌾</div><div class="plant plant-two">🌿</div><div class="plant plant-three">🌱</div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">FIELD OVERVIEW</p><h2>Farm dashboard</h2></div>
+        <span class="status-pill"><span></span> Demo data</span>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon green">🌿</span><p>Total fields</p><strong id="fieldCount">24</strong><small>Across monitored farms</small></article>
+        <article class="stat-card"><span class="stat-icon blue">💧</span><p>Average soil moisture</p><strong>68<small>%</small></strong><small>Target range: 50–75%</small></article>
+        <article class="stat-card"><span class="stat-icon yellow">☀️</span><p>Weather condition</p><strong class="stat-word">Sunny</strong><small>Illustrative local reading</small></article>
+        <article class="stat-card"><span class="stat-icon purple">🌾</span><p>Expected yield</p><strong>4.8<small> t/ha</small></strong><small>Sample seasonal estimate</small></article>
+      </div>
+    </section>
+
+    <section id="crops" class="section">
+      <div class="section-heading"><div><p class="eyebrow">MONITORING</p><h2>Crop health status</h2></div><p class="muted">Sample data for demonstration</p></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Crop / Field</th><th>Soil moisture</th><th>Health score</th><th>Status</th><th>Recommendation</th></tr></thead>
+          <tbody id="cropRows">
+            <tr><td><span class="crop-emoji">🌾</span> Rice · Field A1</td><td>72%</td><td><div class="score"><span style="width:90%"></span></div>90/100</td><td><span class="tag healthy">Healthy</span></td><td>Continue regular monitoring</td></tr>
+            <tr><td><span class="crop-emoji">🌽</span> Maize · Field B2</td><td>44%</td><td><div class="score"><span style="width:62%"></span></div>62/100</td><td><span class="tag warning">Needs attention</span></td><td>Check irrigation requirements</td></tr>
+            <tr><td><span class="crop-emoji">🍅</span> Tomato · Field C3</td><td>58%</td><td><div class="score"><span style="width:78%"></span></div>78/100</td><td><span class="tag healthy">Healthy</span></td><td>Inspect leaves weekly</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Note: Values shown are example data, not live sensor readings or agricultural advice.</p>
+    </section>
+
+    <section id="yield" class="section yield-section">
+      <div class="section-heading"><div><p class="eyebrow">SEASON SUMMARY</p><h2>Yield overview</h2></div></div>
+      <div class="yield-layout">
+        <article class="yield-card">
+          <h3>Estimated yield by crop</h3>
+          <div class="bar-item"><div><span>Rice</span><b>4.8 t/ha</b></div><div class="bar"><span style="width:82%"></span></div></div>
+          <div class="bar-item"><div><span>Maize</span><b>3.6 t/ha</b></div><div class="bar"><span style="width:62%"></span></div></div>
+          <div class="bar-item"><div><span>Tomato</span><b>5.2 t/ha</b></div><div class="bar"><span style="width:90%"></span></div></div>
+          <small class="muted">Illustrative figures for the project demo.</small>
+        </article>
+        <article class="tip-card"><span class="tip-icon">💡</span><h3>Farm management tip</h3><p>Record irrigation, weather, and crop observations consistently. Reliable field records help farmers compare trends across seasons.</p><a href="#register">Add farmer details →</a></article>
+      </div>
+    </section>
+
+    <section id="register" class="section registration-section">
+      <div class="section-heading"><div><p class="eyebrow">GET STARTED</p><h2>Farmer registration</h2></div></div>
+      <form id="farmerForm" class="farmer-form">
+        <label>Farmer name<input id="farmerName" name="farmerName" required minlength="2" placeholder="Enter full name"></label>
+        <label>Email address<input id="farmerEmail" name="farmerEmail" type="email" required placeholder="farmer@example.com"></label>
+        <label>Village / Location<input id="farmerLocation" name="farmerLocation" required placeholder="Enter village or location"></label>
+        <label>Primary crop<select id="farmerCrop" name="farmerCrop" required><option value="">Choose crop</option><option>Rice</option><option>Maize</option><option>Tomato</option><option>Cotton</option><option>Sugarcane</option><option>Other</option></select></label>
+        <button class="primary-btn" type="submit">Register Farmer</button>
+        <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+      <p class="note">Demo only: registration is validated in your browser and is not sent to a server or database.</p>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-icon">🌱</span> AgriSmart</a><p>Smart Agricultural System · DevOps Laboratory Mini Project</p><p>Built with HTML, CSS, JavaScript, Git, Jenkins, Docker and Ansible.</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps { checkout scm }
+        }
+        stage('Validate') {
+            steps {
+                sh 'test -f index.html && test -f style.css && test -f script.js && test -f Dockerfile'
+            }
+        }
+        stage('Test') {
+            steps { sh 'node tests/test-app.js' }
+        }
+        stage('Docker Build') {
+            steps { sh 'docker build -t agrismart:latest .' }
+        }
+    }
+    post {
+        success { echo 'AgriSmart pipeline completed successfully.' }
+        failure { echo 'Check the console log for errors.' }
+    }
+}

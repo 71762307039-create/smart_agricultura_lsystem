@@ -1,0 +1,6 @@
+.git
+.gitignore
+README.md
+ansible
+tests
+Jenkinsfile

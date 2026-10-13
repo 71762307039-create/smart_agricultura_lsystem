@@ -1,0 +1,7 @@
+[web]
+your_server_ip_or_hostname ansible_user=your_username
+
+[web:vars]
+ansible_become=true
+# Set project_path to the directory containing index.html and Dockerfile,
+# for example: project_path=/opt/agrismart

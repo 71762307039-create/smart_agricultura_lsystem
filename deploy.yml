@@ -1,0 +1,41 @@
+---
+- name: Deploy AgriSmart web application with Docker
+  hosts: web
+  become: true
+
+  vars:
+    app_name: agrismart
+    image_name: agrismart:latest
+    container_port: 80
+    host_port: 8080
+
+  tasks:
+    - name: Install Docker on Debian or Ubuntu
+      ansible.builtin.apt:
+        name: docker.io
+        state: present
+        update_cache: true
+      when: ansible_os_family == "Debian"
+
+    - name: Ensure Docker service is running
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Build AgriSmart image from project files on the managed host
+      community.docker.docker_image:
+        name: "{{ image_name }}"
+        source: build
+        build:
+          path: "{{ project_path | default('/opt/agrismart') }}"
+      # The project directory must already exist on the target host.
+
+    - name: Run AgriSmart container
+      community.docker.docker_container:
+        name: "{{ app_name }}"
+        image: "{{ image_name }}"
+        state: started
+        restart_policy: unless-stopped
+        published_ports:
+          - "{{ host_port }}:{{ container_port }}"
